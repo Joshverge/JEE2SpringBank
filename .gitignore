@@ -1,3 +1,5 @@
 eurekaserver/.idea/
 eurekaserver/target/
 *.iml
+databaseservice/.idea/
+databaseservice/target/
