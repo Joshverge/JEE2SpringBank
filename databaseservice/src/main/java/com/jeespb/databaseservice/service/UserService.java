@@ -3,6 +3,7 @@ package com.jeespb.databaseservice.service;
 import com.jeespb.databaseservice.dto.UserDto;
 import com.jeespb.databaseservice.dto.request.AuthenticationRequestDto;
 import com.jeespb.databaseservice.dto.request.LoginDetailRequestDto;
+import com.jeespb.databaseservice.dto.request.SessionRequestDto;
 import com.jeespb.databaseservice.exception.ServiceException;
 import com.jeespb.databaseservice.model.SessionStatus;
 import com.jeespb.databaseservice.model.User;
@@ -34,14 +35,30 @@ public class UserService {
     }
 
     @Transactional
+    public UserDto getSession(SessionRequestDto requestDto) {
+        User user = userRepository.findByCustomerSessionId(requestDto.getSessionID());
+        if (user == null) {
+            throw new ServiceException(String.format("Session '%s' not found.", requestDto.getSessionID()));
+        }
+        return UserDto.from(user);
+    }
+
+    @Transactional
     public void updateLoginDetails(LoginDetailRequestDto requestDto) {
         User user = userRepository.findByUsername(requestDto.getUsername());
         if (user == null) {
             throw new ServiceException(String.format("User '%s' not found.", requestDto.getUsername()));
         }
-        user.setSessionStatus(SessionStatus.ACTIVE);
-        user.setCustomerSessionId(requestDto.getSessionId());
-        user.setLastLoginDate(new Date());
+
+        if (requestDto.getSessionStatus() != null) {
+            user.setSessionStatus(requestDto.getSessionStatus());
+        }
+        if (requestDto.getSessionId() != null) {
+            user.setCustomerSessionId(requestDto.getSessionId());
+        }
+        if (requestDto.getLastLoginDate() != null) {
+            user.setLastLoginDate(new Date());
+        }
         userRepository.save(user);
     }
 }

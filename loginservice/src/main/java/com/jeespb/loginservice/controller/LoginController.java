@@ -21,7 +21,7 @@ public class LoginController {
 
     @ResponseBody
     @PostMapping("/authentication")
-    public LoginDto search(@RequestBody LoginRequestDto loginRequestDto) {
+    public LoginDto authenticate(@RequestBody LoginRequestDto loginRequestDto) {
         return loginService.authenticate(loginRequestDto);
     }
 

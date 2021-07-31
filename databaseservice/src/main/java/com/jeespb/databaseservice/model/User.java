@@ -25,7 +25,7 @@ public class User {
     @Column(name = "last_login_date")
     private Date lastLoginDate;
 
-    @Column(name = "customer_session_id")
+    @Column(name = "customer_session_id", unique = true)
     private String customerSessionId;
 
     @Enumerated(EnumType.STRING)

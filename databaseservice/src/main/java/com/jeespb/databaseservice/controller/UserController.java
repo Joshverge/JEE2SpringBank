@@ -3,6 +3,7 @@ package com.jeespb.databaseservice.controller;
 import com.jeespb.databaseservice.dto.UserDto;
 import com.jeespb.databaseservice.dto.request.AuthenticationRequestDto;
 import com.jeespb.databaseservice.dto.request.LoginDetailRequestDto;
+import com.jeespb.databaseservice.dto.request.SessionRequestDto;
 import com.jeespb.databaseservice.dto.response.UserResponseDto;
 import com.jeespb.databaseservice.service.UserService;
 import org.springframework.stereotype.Controller;
@@ -23,8 +24,15 @@ public class UserController {
 
     @ResponseBody
     @PostMapping(value = "/authentication")
-    public UserResponseDto fetchPassword(@RequestBody AuthenticationRequestDto requestDto) {
+    public UserResponseDto authenticate(@RequestBody AuthenticationRequestDto requestDto) {
         UserDto userDto = userService.authenticate(requestDto);
+        return new UserResponseDto(userDto);
+    }
+
+    @ResponseBody
+    @PostMapping(value = "/session")
+    public UserResponseDto getSession(@RequestBody SessionRequestDto requestDto) {
+        UserDto userDto = userService.getSession(requestDto);
         return new UserResponseDto(userDto);
     }
 

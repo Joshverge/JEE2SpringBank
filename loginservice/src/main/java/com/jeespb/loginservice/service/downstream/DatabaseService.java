@@ -30,7 +30,7 @@ public class DatabaseService {
         this.restTemplate = restTemplate;
     }
 
-    public UserResponseDto fetchUser(String username) {
+    public UserResponseDto authenticate(String username) {
         AuthenticationRequestDto request = new AuthenticationRequestDto(username);
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -45,12 +45,11 @@ public class DatabaseService {
         }
     }
 
-    public void updateLoginDetails(String username, String sessionId) {
-        LoginDetailRequestDto request = new LoginDetailRequestDto(username, sessionId);
+    public void updateLoginDetails(LoginDetailRequestDto requestDto) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 
-        HttpEntity<LoginDetailRequestDto> entity = new HttpEntity<>(request, headers);
+        HttpEntity<LoginDetailRequestDto> entity = new HttpEntity<>(requestDto, headers);
         try {
             restTemplate.postForEntity(loginDetailsUrl, entity, Void.class);
         } catch (Exception ex) {

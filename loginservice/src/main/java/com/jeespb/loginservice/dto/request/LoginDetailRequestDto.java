@@ -1,13 +1,14 @@
 package com.jeespb.loginservice.dto.request;
 
+import com.jeespb.loginservice.dto.SessionStatus;
+
+import java.util.Date;
+
 public class LoginDetailRequestDto {
     private String username;
     private String sessionId;
-
-    public LoginDetailRequestDto(String username, String sessionId) {
-        this.username = username;
-        this.sessionId = sessionId;
-    }
+    private SessionStatus sessionStatus;
+    private Date lastLoginDate;
 
     public String getUsername() {
         return username;
@@ -23,5 +24,21 @@ public class LoginDetailRequestDto {
 
     public void setSessionId(String sessionId) {
         this.sessionId = sessionId;
+    }
+
+    public SessionStatus getSessionStatus() {
+        return sessionStatus;
+    }
+
+    public void setSessionStatus(SessionStatus sessionStatus) {
+        this.sessionStatus = sessionStatus;
+    }
+
+    public Date getLastLoginDate() {
+        return lastLoginDate;
+    }
+
+    public void setLastLoginDate(Date lastLoginDate) {
+        this.lastLoginDate = lastLoginDate;
     }
 }
