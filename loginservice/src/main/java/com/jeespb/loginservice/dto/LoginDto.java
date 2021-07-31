@@ -1,17 +1,29 @@
-package com.icommerce.productservice.dto;
+package com.jeespb.loginservice.dto;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import java.util.Date;
 
 public class LoginDto {
-    private String loginStatus;
+    private LoginStatus loginStatus;
     private String customerName;
     private String customerType;
-    private String lastLoginDate;
+
+    @JsonFormat(pattern = "MM/dd/yyyy")
+    private Date lastLoginDate;
     private String sessionID;
 
-    public String getLoginStatus() {
+    public static LoginDto invalid() {
+        LoginDto loginDto = new LoginDto();
+        loginDto.setLoginStatus(LoginStatus.INVALID);
+        return loginDto;
+    }
+
+    public LoginStatus getLoginStatus() {
         return loginStatus;
     }
 
-    public void setLoginStatus(String loginStatus) {
+    public void setLoginStatus(LoginStatus loginStatus) {
         this.loginStatus = loginStatus;
     }
 
@@ -31,11 +43,11 @@ public class LoginDto {
         this.customerType = customerType;
     }
 
-    public String getLastLoginDate() {
+    public Date getLastLoginDate() {
         return lastLoginDate;
     }
 
-    public void setLastLoginDate(String lastLoginDate) {
+    public void setLastLoginDate(Date lastLoginDate) {
         this.lastLoginDate = lastLoginDate;
     }
 

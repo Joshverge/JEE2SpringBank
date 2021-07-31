@@ -13,5 +13,6 @@ eureka:
     preferIpAddress: true
 
 microservices:
-  databaseservice:
-    authentication: http://databaseservice//domain/user/authentication?username=%s
+  databaseService:
+    authentication: http://databaseservice/domain/user/authentication
+    loginDetails: http://databaseservice/domain/user/updateLoginDetails

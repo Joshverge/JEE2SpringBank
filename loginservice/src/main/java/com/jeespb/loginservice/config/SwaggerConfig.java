@@ -1,4 +1,4 @@
-package com.icommerce.productservice.config;
+package com.jeespb.loginservice.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

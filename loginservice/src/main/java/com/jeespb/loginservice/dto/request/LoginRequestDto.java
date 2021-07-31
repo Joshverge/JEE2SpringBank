@@ -1,4 +1,4 @@
-package com.icommerce.productservice.dto.request;
+package com.jeespb.loginservice.dto.request;
 
 public class LoginRequestDto {
     private String userId;

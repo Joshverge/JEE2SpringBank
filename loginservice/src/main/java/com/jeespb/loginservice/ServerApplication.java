@@ -1,4 +1,4 @@
-package com.icommerce.productservice;
+package com.jeespb.loginservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

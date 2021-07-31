@@ -1,9 +1,8 @@
-package com.icommerce.productservice.controller;
+package com.jeespb.loginservice.controller;
 
-import com.icommerce.productservice.dto.LoginDto;
-import com.icommerce.productservice.dto.request.LoginRequestDto;
-import com.icommerce.productservice.dto.response.LoginResponseDto;
-import com.icommerce.productservice.service.LoginService;
+import com.jeespb.loginservice.dto.LoginDto;
+import com.jeespb.loginservice.dto.request.LoginRequestDto;
+import com.jeespb.loginservice.service.LoginService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,9 +21,8 @@ public class LoginController {
 
     @ResponseBody
     @PostMapping("/authentication")
-    public LoginResponseDto search(@RequestBody LoginRequestDto loginRequestDto) {
-        LoginDto loginDto = loginService.authenticate(loginRequestDto);
-        return new LoginResponseDto(loginDto);
+    public LoginDto search(@RequestBody LoginRequestDto loginRequestDto) {
+        return loginService.authenticate(loginRequestDto);
     }
 
 }

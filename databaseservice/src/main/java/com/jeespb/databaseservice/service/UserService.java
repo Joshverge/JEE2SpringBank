@@ -30,19 +30,16 @@ public class UserService {
         if (SessionStatus.ACTIVE.equals(user.getSessionStatus())) {
             throw new ServiceException("User session is active");
         }
-
-        user.setSessionStatus(SessionStatus.ACTIVE);
-        userRepository.save(user);
-
         return UserDto.from(user);
     }
 
+    @Transactional
     public void updateLoginDetails(LoginDetailRequestDto requestDto) {
         User user = userRepository.findByUsername(requestDto.getUsername());
         if (user == null) {
             throw new ServiceException(String.format("User '%s' not found.", requestDto.getUsername()));
         }
-
+        user.setSessionStatus(SessionStatus.ACTIVE);
         user.setCustomerSessionId(requestDto.getSessionId());
         user.setLastLoginDate(new Date());
         userRepository.save(user);

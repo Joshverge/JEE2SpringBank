@@ -1,4 +1,4 @@
-package com.icommerce.productservice.dto.response;
+package com.jeespb.loginservice.dto.response;
 
 public abstract class ResponseDto<T> {
 

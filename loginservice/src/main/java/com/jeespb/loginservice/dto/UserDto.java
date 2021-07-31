@@ -1,10 +1,15 @@
-package com.icommerce.productservice.dto;
+package com.jeespb.loginservice.dto;
+
+import java.util.Date;
 
 public class UserDto {
     private String username;
     private String password;
     private String userType;
     private String customerName;
+    private String sessionId;
+    private SessionStatus sessionStatus;
+    private Date lastLoginDate;
 
     public String getUsername() {
         return username;
@@ -36,5 +41,29 @@ public class UserDto {
 
     public void setCustomerName(String customerName) {
         this.customerName = customerName;
+    }
+
+    public String getSessionId() {
+        return sessionId;
+    }
+
+    public void setSessionId(String sessionId) {
+        this.sessionId = sessionId;
+    }
+
+    public SessionStatus getSessionStatus() {
+        return sessionStatus;
+    }
+
+    public void setSessionStatus(SessionStatus sessionStatus) {
+        this.sessionStatus = sessionStatus;
+    }
+
+    public Date getLastLoginDate() {
+        return lastLoginDate;
+    }
+
+    public void setLastLoginDate(Date lastLoginDate) {
+        this.lastLoginDate = lastLoginDate;
     }
 }

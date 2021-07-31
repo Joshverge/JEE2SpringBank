@@ -1,4 +1,4 @@
-package com.icommerce.productservice.exception;
+package com.jeespb.loginservice.exception;
 
 public class ServiceException extends RuntimeException {
     public ServiceException(String message) {
