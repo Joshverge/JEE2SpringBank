@@ -3,3 +3,5 @@ eurekaserver/target/
 *.iml
 databaseservice/.idea/
 databaseservice/target/
+loginservice/.idea/
+loginservice/target/

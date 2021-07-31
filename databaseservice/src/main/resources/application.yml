@@ -3,7 +3,7 @@ erver:
 
 spring:
   application:
-    name: productservice
+    name: databaseservice
   datasource:
     url: jdbc:h2:mem:product
     driverClassName: org.h2.Driver
