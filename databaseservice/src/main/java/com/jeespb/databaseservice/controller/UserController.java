@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/domain/user")
 public class UserController {
 
     private final UserService userService;
@@ -20,7 +20,7 @@ public class UserController {
     }
 
     @ResponseBody
-    @GetMapping
+    @GetMapping(value = "/authentication")
     public UserResponseDto fetchPassword(@RequestParam("username") String username) {
         UserDto userDto = userService.fetchPassword(username);
         return new UserResponseDto(userDto);

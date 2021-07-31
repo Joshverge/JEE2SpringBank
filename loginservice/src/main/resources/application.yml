@@ -10,5 +10,5 @@ eureka:
     preferIpAddress: true
 
 microservices:
-  databaseService:
-    fetchUser: http://databaseservice//user?username=%s
+  databaseservice:
+    authentication: http://databaseservice//domain/user/authentication?username=%s

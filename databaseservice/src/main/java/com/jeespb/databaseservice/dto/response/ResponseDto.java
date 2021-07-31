@@ -1,6 +1,6 @@
 package com.jeespb.databaseservice.dto.response;
 
-public class ResponseDto<T> {
+public abstract class ResponseDto<T> {
 
     protected static final int SUCCESS_CODE = 200;
 

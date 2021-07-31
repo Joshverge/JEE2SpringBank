@@ -9,7 +9,7 @@ import org.springframework.web.client.RestTemplate;
 @Component
 public class DatabaseService {
 
-    @Value("${microservices.databaseService.fetchUser}")
+    @Value("${microservices.databaseservice.authentication}")
     private String fetchUserUrl;
 
     private final RestTemplate restTemplate;
