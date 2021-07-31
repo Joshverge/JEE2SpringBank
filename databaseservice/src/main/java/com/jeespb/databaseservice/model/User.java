@@ -1,9 +1,7 @@
 package com.jeespb.databaseservice.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Date;
 
 @Entity(name = "user")
 public class User {
@@ -23,6 +21,16 @@ public class User {
 
     @Column(name = "customer_type")
     private String userType;
+
+    @Column(name = "last_login_date")
+    private Date lastLoginDate;
+
+    @Column(name = "customer_session_id")
+    private String customerSessionId;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "session_status")
+    private SessionStatus sessionStatus;
 
     public int getId() {
         return id;
@@ -62,5 +70,29 @@ public class User {
 
     public void setUserType(String userType) {
         this.userType = userType;
+    }
+
+    public Date getLastLoginDate() {
+        return lastLoginDate;
+    }
+
+    public void setLastLoginDate(Date lastLoginDate) {
+        this.lastLoginDate = lastLoginDate;
+    }
+
+    public String getCustomerSessionId() {
+        return customerSessionId;
+    }
+
+    public void setCustomerSessionId(String customerSessionId) {
+        this.customerSessionId = customerSessionId;
+    }
+
+    public SessionStatus getSessionStatus() {
+        return sessionStatus;
+    }
+
+    public void setSessionStatus(SessionStatus sessionStatus) {
+        this.sessionStatus = sessionStatus;
     }
 }

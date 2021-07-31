@@ -1,13 +1,12 @@
 package com.jeespb.databaseservice.controller;
 
 import com.jeespb.databaseservice.dto.UserDto;
+import com.jeespb.databaseservice.dto.request.AuthenticationRequestDto;
+import com.jeespb.databaseservice.dto.request.LoginDetailRequestDto;
 import com.jeespb.databaseservice.dto.response.UserResponseDto;
 import com.jeespb.databaseservice.service.UserService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/domain/user")
@@ -20,10 +19,15 @@ public class UserController {
     }
 
     @ResponseBody
-    @GetMapping(value = "/authentication")
-    public UserResponseDto fetchPassword(@RequestParam("username") String username) {
-        UserDto userDto = userService.fetchPassword(username);
+    @PostMapping(value = "/authentication")
+    public UserResponseDto fetchPassword(@RequestBody AuthenticationRequestDto requestDto) {
+        UserDto userDto = userService.authenticate(requestDto);
         return new UserResponseDto(userDto);
     }
 
+    @ResponseBody
+    @PutMapping(value = "/updateLoginDetails")
+    public void updateLoginDetails(@RequestBody LoginDetailRequestDto requestDto) {
+        userService.updateLoginDetails(requestDto);
+    }
 }

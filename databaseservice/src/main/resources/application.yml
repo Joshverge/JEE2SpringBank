@@ -5,15 +5,15 @@ spring:
   application:
     name: databaseservice
   datasource:
-    url: jdbc:h2:mem:product
+    url: jdbc:h2:mem:jeespb
     driverClassName: org.h2.Driver
     username: sa
     password: pw
     jpa:
       database-platform: org.hibernate.dialect.H2Dialect
-    h2:
-      console:
-        enabled: true
+  h2:
+    console:
+      enabled: true
 
 eureka:
   client:
