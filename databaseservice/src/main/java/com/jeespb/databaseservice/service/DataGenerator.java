@@ -1,14 +1,17 @@
 package com.jeespb.databaseservice.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jeespb.databaseservice.model.Account;
+import com.jeespb.databaseservice.model.Transaction;
 import com.jeespb.databaseservice.model.User;
+import com.jeespb.databaseservice.repository.AccountRepository;
+import com.jeespb.databaseservice.repository.TransactionRepository;
 import com.jeespb.databaseservice.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.core.io.Resource;
-import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -24,16 +27,27 @@ public class DataGenerator {
 
     private final Logger logger = LoggerFactory.getLogger(DataGenerator.class);
 
-    @Value("classpath:data/user.json")
-    private Resource userResourceFile;
+    @Value("classpath:data/users.json")
+    private Resource userJsonResource;
+
+    @Value("classpath:data/accounts.json")
+    private Resource accountJsonResource;
+
+    @Value("classpath:data/transactions.json")
+    private Resource transactionJsonResource;
 
     private final UserRepository userRepository;
-    private final ObjectMapper objectMapper;
-    private final ResourceLoader resourceLoader;
+    private final AccountRepository accountRepository;
+    private final TransactionRepository transactionRepository;
 
-    public DataGenerator(UserRepository userRepository, ResourceLoader resourceLoader) {
+    private final ObjectMapper objectMapper;
+
+    public DataGenerator(UserRepository userRepository,
+                         AccountRepository accountRepository,
+                         TransactionRepository transactionRepository) {
         this.userRepository = userRepository;
-        this.resourceLoader = resourceLoader;
+        this.accountRepository = accountRepository;
+        this.transactionRepository = transactionRepository;
         this.objectMapper = new ObjectMapper();
     }
 
@@ -44,11 +58,29 @@ public class DataGenerator {
 
     private void generateData() throws IOException {
         generateUsers();
+        generateAccounts();
+        generateTransactions();
+    }
+
+    private void generateTransactions() throws IOException {
+        logger.info("Generating transactions...");
+        InputStream inputStream = transactionJsonResource.getInputStream();
+        Transaction[] transactions = objectMapper.readValue(inputStream, Transaction[].class);
+        Arrays.stream(transactions).forEach(transactionRepository::save);
+        logger.info("Generated {} transactions", transactions.length);
+    }
+
+    private void generateAccounts() throws IOException {
+        logger.info("Generating accounts...");
+        InputStream inputStream = accountJsonResource.getInputStream();
+        Account[] accounts = objectMapper.readValue(inputStream, Account[].class);
+        Arrays.stream(accounts).forEach(accountRepository::save);
+        logger.info("Generated {} accounts", accounts.length);
     }
 
     private void generateUsers() throws IOException {
         logger.info("Generating users...");
-        InputStream inputStream = userResourceFile.getInputStream();
+        InputStream inputStream = userJsonResource.getInputStream();
         User[] users = objectMapper.readValue(inputStream, User[].class);
         Arrays.stream(users).forEach(userRepository::save);
         logger.info("Generated {} users", users.length);
