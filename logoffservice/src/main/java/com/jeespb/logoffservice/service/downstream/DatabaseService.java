@@ -1,8 +1,8 @@
-package com.jeespb.loginservice.service.downstream;
+package com.jeespb.logoffservice.service.downstream;
 
-import com.jeespb.loginservice.dto.request.AuthenticationRequestDto;
-import com.jeespb.loginservice.dto.request.LoginDetailRequestDto;
-import com.jeespb.loginservice.dto.response.UserResponseDto;
+import com.jeespb.logoffservice.dto.request.LoginDetailRequestDto;
+import com.jeespb.logoffservice.dto.request.SessionRequestDto;
+import com.jeespb.logoffservice.dto.response.UserResponseDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -18,8 +18,8 @@ public class DatabaseService {
 
     private static Logger logger = LoggerFactory.getLogger(DatabaseService.class);
 
-    @Value("${microservices.databaseService.authentication}")
-    private String authenticationUrl;
+    @Value("${microservices.databaseService.session}")
+    private String sessionUrl;
 
     @Value("${microservices.databaseService.loginDetails}")
     private String loginDetailsUrl;
@@ -30,17 +30,16 @@ public class DatabaseService {
         this.restTemplate = restTemplate;
     }
 
-    public UserResponseDto authenticate(String username) {
-        AuthenticationRequestDto request = new AuthenticationRequestDto(username);
+    public UserResponseDto getSession(SessionRequestDto requestDto) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 
-        HttpEntity<AuthenticationRequestDto> entity = new HttpEntity<>(request, headers);
+        HttpEntity<SessionRequestDto> entity = new HttpEntity<>(requestDto, headers);
         try {
-            ResponseEntity<UserResponseDto> response = restTemplate.postForEntity(authenticationUrl, entity, UserResponseDto.class);
+            ResponseEntity<UserResponseDto> response = restTemplate.postForEntity(sessionUrl, entity, UserResponseDto.class);
             return response.getBody();
         } catch (Exception ex) {
-            logger.info("Exception when authentication: {}", ex.getMessage());
+            logger.info("Exception when get session: {}", ex.getMessage());
             return null;
         }
     }

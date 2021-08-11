@@ -1,4 +1,4 @@
-package com.jeespb.loginservice.dto;
+package com.jeespb.logoffservice.dto;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 
