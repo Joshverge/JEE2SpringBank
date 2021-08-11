@@ -20,14 +20,6 @@ public class CustomExceptionHandler {
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     public ErrorResponseDto handleServiceException(ServiceException exception) {
         logger.info("Error: {}", exception.getMessage());
-        return new ErrorResponseDto(400, exception.getMessage());
-    }
-
-    @ResponseBody
-    @ExceptionHandler(value = Exception.class)
-    @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
-    public ErrorResponseDto handleException(Exception exception) {
-        logger.error("Internal error.", exception);
-        return new ErrorResponseDto(500, "Internal Server Error");
+        return new ErrorResponseDto("Bad request", exception.getMessage());
     }
 }

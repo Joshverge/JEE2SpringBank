@@ -1,8 +1,8 @@
 package com.jeespb.logoffservice.service.downstream;
 
+import com.jeespb.logoffservice.dto.UserDto;
 import com.jeespb.logoffservice.dto.request.LoginDetailRequestDto;
 import com.jeespb.logoffservice.dto.request.SessionRequestDto;
-import com.jeespb.logoffservice.dto.response.UserResponseDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -30,13 +30,13 @@ public class DatabaseService {
         this.restTemplate = restTemplate;
     }
 
-    public UserResponseDto getSession(SessionRequestDto requestDto) {
+    public UserDto getSession(SessionRequestDto requestDto) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
 
         HttpEntity<SessionRequestDto> entity = new HttpEntity<>(requestDto, headers);
         try {
-            ResponseEntity<UserResponseDto> response = restTemplate.postForEntity(sessionUrl, entity, UserResponseDto.class);
+            ResponseEntity<UserDto> response = restTemplate.postForEntity(sessionUrl, entity, UserDto.class);
             return response.getBody();
         } catch (Exception ex) {
             logger.info("Exception when get session: {}", ex.getMessage());

@@ -14,6 +14,7 @@
 		<module>databaseservice</module>
 		<module>loginservice</module>
 		<module>logoffservice</module>
+		<module>accountservice</module>
 	</modules>
 
 </project>

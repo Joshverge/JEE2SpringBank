@@ -1,5 +1,6 @@
 package com.jeespb.accountservice.controller;
 
+import com.jeespb.accountservice.config.ValidSession;
 import com.jeespb.accountservice.dto.AccountDto;
 import com.jeespb.accountservice.dto.request.AccountInfoRequestDto;
 import com.jeespb.accountservice.dto.response.AccountResponseDto;
@@ -9,8 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.util.List;
 
 @Controller
 @RequestMapping("/bank/user")
@@ -22,6 +21,7 @@ public class AccountController {
         this.accountService = accountService;
     }
 
+    @ValidSession
     @ResponseBody
     @PostMapping("/dashboard/accountInfo")
     public AccountResponseDto getAccountInfo(@RequestBody AccountInfoRequestDto requestDto) {

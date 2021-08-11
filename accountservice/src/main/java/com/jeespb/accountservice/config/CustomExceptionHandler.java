@@ -20,6 +20,7 @@ public class CustomExceptionHandler {
     @ExceptionHandler(value = InvalidSessionException.class)
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     public ErrorResponseDto handleInvalidSessionException(InvalidSessionException exception) {
+        logger.warn("Exception: {}", exception.getMessage());
         return ErrorResponseDto.from(ErrorType.SESSION_INACTIVE);
     }
 

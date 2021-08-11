@@ -1,18 +1,18 @@
 [
   {
     "username": "abc@xyz.com",
-    "accountId": "12341234",
-    "balance": "500",
-    "type": "ANNUAL",
-    "redeemStatus": "AVAILABLE",
-    "expiry": "7/10/2020"
+    "rewardsAccountId": "12341234",
+    "rewardsBalance": "500",
+    "rewardsType": "ANNUAL",
+    "rewardsRedeemStatus": "AVAILABLE",
+    "rewardsExpiry": "7/10/2020"
   },
   {
     "username": "cast_123",
-    "accountId": "897645612",
-    "balance": "400",
-    "type": "ANNUAL",
-    "redeemStatus": "UNAVAILABLE",
-    "expiry": "7/10/2020"
+    "rewardsAccountId": "897645612",
+    "rewardsBalance": "400",
+    "rewardsType": "ANNUAL",
+    "rewardsRedeemStatus": "UNAVAILABLE",
+    "rewardsExpiry": "7/10/2020"
   }
 ]

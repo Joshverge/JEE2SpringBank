@@ -16,19 +16,19 @@ public class Reward {
     private String username;
 
     @Column(name = "rewards_account_id", nullable = false)
-    private String accountId;
+    private String rewardsAccountId;
 
     @Column(name = "rewards_balance", nullable = false)
-    private Double balance;
+    private Double rewardsBalance;
 
     @Column(name = "rewards_type", nullable = false)
-    private String type;
+    private String rewardsType;
 
     @Column(name = "rewards_redeem_status", nullable = false)
-    private String redeemStatus;
+    private String rewardsRedeemStatus;
 
     @Column(name = "rewards_expiry", nullable = false)
-    private String expiry;
+    private String rewardsExpiry;
 
     public int getId() {
         return id;
@@ -46,43 +46,43 @@ public class Reward {
         this.username = username;
     }
 
-    public String getAccountId() {
-        return accountId;
+    public String getRewardsAccountId() {
+        return rewardsAccountId;
     }
 
-    public void setAccountId(String accountId) {
-        this.accountId = accountId;
+    public void setRewardsAccountId(String rewardsAccountId) {
+        this.rewardsAccountId = rewardsAccountId;
     }
 
-    public Double getBalance() {
-        return balance;
+    public Double getRewardsBalance() {
+        return rewardsBalance;
     }
 
-    public void setBalance(Double balance) {
-        this.balance = balance;
+    public void setRewardsBalance(Double rewardsBalance) {
+        this.rewardsBalance = rewardsBalance;
     }
 
-    public String getType() {
-        return type;
+    public String getRewardsType() {
+        return rewardsType;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setRewardsType(String rewardsType) {
+        this.rewardsType = rewardsType;
     }
 
-    public String getRedeemStatus() {
-        return redeemStatus;
+    public String getRewardsRedeemStatus() {
+        return rewardsRedeemStatus;
     }
 
-    public void setRedeemStatus(String redeemStatus) {
-        this.redeemStatus = redeemStatus;
+    public void setRewardsRedeemStatus(String rewardsRedeemStatus) {
+        this.rewardsRedeemStatus = rewardsRedeemStatus;
     }
 
-    public String getExpiry() {
-        return expiry;
+    public String getRewardsExpiry() {
+        return rewardsExpiry;
     }
 
-    public void setExpiry(String expiry) {
-        this.expiry = expiry;
+    public void setRewardsExpiry(String rewardsExpiry) {
+        this.rewardsExpiry = rewardsExpiry;
     }
 }

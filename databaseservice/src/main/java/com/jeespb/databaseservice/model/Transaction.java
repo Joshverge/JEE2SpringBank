@@ -16,19 +16,19 @@ public class Transaction {
     private String accountNumber;
 
     @Column(name = "transaction_date", nullable = false)
-    private String date;
+    private String transactionDate;
 
     @Column(name = "transaction_amount", nullable = false)
-    private Double amount;
+    private Double transactionAmount;
 
     @Column(name = "transaction_currency", nullable = false)
-    private String currency;
+    private String transactionCurrency;
 
     @Column(name = "transaction_status", nullable = false)
-    private String status;
+    private String transactionStatus;
 
     @Column(name = "transaction_description", nullable = false)
-    private String description;
+    private String transactionDescription;
 
     public int getId() {
         return id;
@@ -46,43 +46,43 @@ public class Transaction {
         this.accountNumber = accountNumber;
     }
 
-    public String getDate() {
-        return date;
+    public String getTransactionDate() {
+        return transactionDate;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setTransactionDate(String transactionDate) {
+        this.transactionDate = transactionDate;
     }
 
-    public Double getAmount() {
-        return amount;
+    public Double getTransactionAmount() {
+        return transactionAmount;
     }
 
-    public void setAmount(Double amount) {
-        this.amount = amount;
+    public void setTransactionAmount(Double transactionAmount) {
+        this.transactionAmount = transactionAmount;
     }
 
-    public String getCurrency() {
-        return currency;
+    public String getTransactionCurrency() {
+        return transactionCurrency;
     }
 
-    public void setCurrency(String currency) {
-        this.currency = currency;
+    public void setTransactionCurrency(String transactionCurrency) {
+        this.transactionCurrency = transactionCurrency;
     }
 
-    public String getStatus() {
-        return status;
+    public String getTransactionStatus() {
+        return transactionStatus;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setTransactionStatus(String transactionStatus) {
+        this.transactionStatus = transactionStatus;
     }
 
-    public String getDescription() {
-        return description;
+    public String getTransactionDescription() {
+        return transactionDescription;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setTransactionDescription(String transactionDescription) {
+        this.transactionDescription = transactionDescription;
     }
 }

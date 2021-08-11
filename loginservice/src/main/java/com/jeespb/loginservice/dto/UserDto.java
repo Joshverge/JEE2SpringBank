@@ -5,11 +5,11 @@ import java.util.Date;
 public class UserDto {
     private String username;
     private String password;
-    private String userType;
     private String customerName;
-    private String sessionId;
-    private SessionStatus sessionStatus;
+    private String customerType;
     private Date lastLoginDate;
+    private String customerSessionId;
+    private SessionStatus sessionStatus;
 
     public String getUsername() {
         return username;
@@ -27,14 +27,6 @@ public class UserDto {
         this.password = password;
     }
 
-    public String getUserType() {
-        return userType;
-    }
-
-    public void setUserType(String userType) {
-        this.userType = userType;
-    }
-
     public String getCustomerName() {
         return customerName;
     }
@@ -43,20 +35,12 @@ public class UserDto {
         this.customerName = customerName;
     }
 
-    public String getSessionId() {
-        return sessionId;
+    public String getCustomerType() {
+        return customerType;
     }
 
-    public void setSessionId(String sessionId) {
-        this.sessionId = sessionId;
-    }
-
-    public SessionStatus getSessionStatus() {
-        return sessionStatus;
-    }
-
-    public void setSessionStatus(SessionStatus sessionStatus) {
-        this.sessionStatus = sessionStatus;
+    public void setCustomerType(String customerType) {
+        this.customerType = customerType;
     }
 
     public Date getLastLoginDate() {
@@ -65,5 +49,21 @@ public class UserDto {
 
     public void setLastLoginDate(Date lastLoginDate) {
         this.lastLoginDate = lastLoginDate;
+    }
+
+    public String getCustomerSessionId() {
+        return customerSessionId;
+    }
+
+    public void setCustomerSessionId(String customerSessionId) {
+        this.customerSessionId = customerSessionId;
+    }
+
+    public SessionStatus getSessionStatus() {
+        return sessionStatus;
+    }
+
+    public void setSessionStatus(SessionStatus sessionStatus) {
+        this.sessionStatus = sessionStatus;
     }
 }

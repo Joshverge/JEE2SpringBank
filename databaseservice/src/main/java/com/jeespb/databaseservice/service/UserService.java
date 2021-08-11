@@ -1,6 +1,5 @@
 package com.jeespb.databaseservice.service;
 
-import com.jeespb.databaseservice.dto.UserDto;
 import com.jeespb.databaseservice.dto.request.AuthenticationRequestDto;
 import com.jeespb.databaseservice.dto.request.LoginDetailRequestDto;
 import com.jeespb.databaseservice.dto.request.SessionRequestDto;
@@ -10,7 +9,6 @@ import com.jeespb.databaseservice.model.User;
 import com.jeespb.databaseservice.repository.UserRepository;
 import org.springframework.stereotype.Component;
 
-import javax.transaction.Transactional;
 import java.util.Date;
 
 @Component
@@ -22,8 +20,7 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    @Transactional
-    public UserDto authenticate(AuthenticationRequestDto requestDto) {
+    public User authenticate(AuthenticationRequestDto requestDto) {
         User user = userRepository.findByUsername(requestDto.getUsername());
         if (user == null) {
             throw new ServiceException(String.format("User '%s' not found.", requestDto.getUsername()));
@@ -31,25 +28,22 @@ public class UserService {
         if (SessionStatus.ACTIVE.equals(user.getSessionStatus())) {
             throw new ServiceException("User session is active");
         }
-        return UserDto.from(user);
+        return user;
     }
 
-    @Transactional
-    public UserDto getSession(SessionRequestDto requestDto) {
+    public User getSession(SessionRequestDto requestDto) {
         User user = userRepository.findByCustomerSessionId(requestDto.getSessionID());
         if (user == null) {
             throw new ServiceException(String.format("Session '%s' not found.", requestDto.getSessionID()));
         }
-        return UserDto.from(user);
+        return user;
     }
 
-    @Transactional
     public void updateLoginDetails(LoginDetailRequestDto requestDto) {
         User user = userRepository.findByUsername(requestDto.getUsername());
         if (user == null) {
             throw new ServiceException(String.format("User '%s' not found.", requestDto.getUsername()));
         }
-
         if (requestDto.getSessionStatus() != null) {
             user.setSessionStatus(requestDto.getSessionStatus());
         }

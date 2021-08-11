@@ -20,7 +20,7 @@ public class User {
     private String customerName;
 
     @Column(name = "customer_type")
-    private String userType;
+    private String customerType;
 
     @Column(name = "last_login_date")
     private Date lastLoginDate;
@@ -64,12 +64,12 @@ public class User {
         this.customerName = customerName;
     }
 
-    public String getUserType() {
-        return userType;
+    public String getCustomerType() {
+        return customerType;
     }
 
-    public void setUserType(String userType) {
-        this.userType = userType;
+    public void setCustomerType(String customerType) {
+        this.customerType = customerType;
     }
 
     public Date getLastLoginDate() {

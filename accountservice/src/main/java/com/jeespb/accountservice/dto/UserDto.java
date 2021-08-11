@@ -1,4 +1,4 @@
-package com.jeespb.logoffservice.dto;
+package com.jeespb.accountservice.dto;
 
 import java.util.Date;
 
