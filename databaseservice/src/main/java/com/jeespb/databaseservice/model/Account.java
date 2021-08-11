@@ -16,22 +16,22 @@ public class Account {
     private String username;
 
     @Column(name = "account_number", nullable = false, unique = true)
-    private String number;
+    private String accountNumber;
 
     @Column(name = "account_type", nullable = false)
-    private String type;
+    private String accountType;
 
     @Column(name = "account_branch_code", nullable = false)
-    private String branchCode;
+    private String accountBranchCode;
 
     @Column(name = "account_balance", nullable = false)
-    private Double balance;
+    private Double accountBalance;
 
     @Column(name = "account_currency", nullable = false)
-    private String currency;
+    private String accountCurrency;
 
     @Column(name = "account_status", nullable = false)
-    private String status;
+    private String accountStatus;
 
     public int getId() {
         return id;
@@ -49,51 +49,51 @@ public class Account {
         this.username = username;
     }
 
-    public String getNumber() {
-        return number;
+    public String getAccountNumber() {
+        return accountNumber;
     }
 
-    public void setNumber(String number) {
-        this.number = number;
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
     }
 
-    public String getType() {
-        return type;
+    public String getAccountType() {
+        return accountType;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setAccountType(String accountType) {
+        this.accountType = accountType;
     }
 
-    public String getBranchCode() {
-        return branchCode;
+    public String getAccountBranchCode() {
+        return accountBranchCode;
     }
 
-    public void setBranchCode(String branchCode) {
-        this.branchCode = branchCode;
+    public void setAccountBranchCode(String accountBranchCode) {
+        this.accountBranchCode = accountBranchCode;
     }
 
-    public Double getBalance() {
-        return balance;
+    public Double getAccountBalance() {
+        return accountBalance;
     }
 
-    public void setBalance(Double balance) {
-        this.balance = balance;
+    public void setAccountBalance(Double accountBalance) {
+        this.accountBalance = accountBalance;
     }
 
-    public String getCurrency() {
-        return currency;
+    public String getAccountCurrency() {
+        return accountCurrency;
     }
 
-    public void setCurrency(String currency) {
-        this.currency = currency;
+    public void setAccountCurrency(String accountCurrency) {
+        this.accountCurrency = accountCurrency;
     }
 
-    public String getStatus() {
-        return status;
+    public String getAccountStatus() {
+        return accountStatus;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setAccountStatus(String accountStatus) {
+        this.accountStatus = accountStatus;
     }
 }

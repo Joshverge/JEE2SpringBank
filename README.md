@@ -36,13 +36,25 @@ User name: sa
 Password: pw
 ```
 
-Generated one user for login testing
+#### Generated data
+By default, the sample data will be generated when starting the service. <br />
+To disable generate data, adding the parameter
 ```
-Username: abc@xyz.com
-Password: asdf123
-Name: Name 1
-Type: tier-1
+-Ddata.generator.enabled=false
 ```
+
+The sample data as the requirement is stored in folder
+```
+databaseservice/src/main/resources/data
+```
+Including 4 json files
+```
+users.json
+accounts.json
+transactions.json
+rewards.json
+```
+
 
 ### Start Login Service
 Run command
