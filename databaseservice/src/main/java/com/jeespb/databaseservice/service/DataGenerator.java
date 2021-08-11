@@ -2,9 +2,11 @@ package com.jeespb.databaseservice.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jeespb.databaseservice.model.Account;
+import com.jeespb.databaseservice.model.Reward;
 import com.jeespb.databaseservice.model.Transaction;
 import com.jeespb.databaseservice.model.User;
 import com.jeespb.databaseservice.repository.AccountRepository;
+import com.jeespb.databaseservice.repository.RewardRepository;
 import com.jeespb.databaseservice.repository.TransactionRepository;
 import com.jeespb.databaseservice.repository.UserRepository;
 import org.slf4j.Logger;
@@ -36,18 +38,24 @@ public class DataGenerator {
     @Value("classpath:data/transactions.json")
     private Resource transactionJsonResource;
 
+    @Value("classpath:data/rewards.json")
+    private Resource rewardJsonResource;
+
     private final UserRepository userRepository;
     private final AccountRepository accountRepository;
     private final TransactionRepository transactionRepository;
+    private final RewardRepository rewardRepository;
 
     private final ObjectMapper objectMapper;
 
     public DataGenerator(UserRepository userRepository,
                          AccountRepository accountRepository,
-                         TransactionRepository transactionRepository) {
+                         TransactionRepository transactionRepository,
+                         RewardRepository rewardRepository) {
         this.userRepository = userRepository;
         this.accountRepository = accountRepository;
         this.transactionRepository = transactionRepository;
+        this.rewardRepository = rewardRepository;
         this.objectMapper = new ObjectMapper();
     }
 
@@ -57,9 +65,20 @@ public class DataGenerator {
     }
 
     private void generateData() throws IOException {
+        logger.info("Generating data...");
         generateUsers();
         generateAccounts();
         generateTransactions();
+        generateRewards();
+        logger.info("Generated data");
+    }
+
+    private void generateRewards() throws IOException {
+        logger.info("Generating rewards...");
+        InputStream inputStream = rewardJsonResource.getInputStream();
+        Reward[] rewards = objectMapper.readValue(inputStream, Reward[].class);
+        Arrays.stream(rewards).forEach(rewardRepository::save);
+        logger.info("Generated {} rewards", rewards.length);
     }
 
     private void generateTransactions() throws IOException {
