@@ -74,3 +74,11 @@ java -jar ./logoffservice/target/logoffservice-1.0.0.jar
 Logoff Service is running at port 8082 <br/>
 To access swagger: http://localhost:8082/swagger-ui.html
 
+### Start Account Service
+Run command
+```shell
+java -jar ./accountservice/target/accountservice-1.0.0.jar
+```
+
+Account Service is running at port 8083 <br/>
+To access swagger: http://localhost:8083/swagger-ui.html
