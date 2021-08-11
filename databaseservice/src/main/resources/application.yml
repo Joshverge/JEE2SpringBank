@@ -1,6 +1,10 @@
 server:
   port: 8080
 
+data:
+  generator:
+    enabled: true
+
 spring:
   application:
     name: databaseservice

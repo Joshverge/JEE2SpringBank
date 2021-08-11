@@ -1,0 +1,26 @@
+[
+  {
+    "username": "abc@xyz.com",
+    "password": "asdf123",
+    "customerName": "Name 1",
+    "userType": "tier-1"
+  },
+  {
+    "username": "cast_123",
+    "password": "qwer345",
+    "customerName": "Name 2",
+    "userType": "tier-2"
+  },
+  {
+    "username": "someday_me",
+    "password": "aczdf&86q",
+    "customerName": "Name 3",
+    "userType": "tier-elite"
+  },
+  {
+    "username": "first.last",
+    "password": "qwerd346",
+    "customerName": "Name 4",
+    "userType": "tier-gold"
+  }
+]
