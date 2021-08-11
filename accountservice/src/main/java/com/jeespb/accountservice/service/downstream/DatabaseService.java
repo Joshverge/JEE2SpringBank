@@ -1,6 +1,8 @@
 package com.jeespb.accountservice.service.downstream;
 
 import com.jeespb.accountservice.dto.AccountDto;
+import com.jeespb.accountservice.dto.RewardDto;
+import com.jeespb.accountservice.dto.TransactionDto;
 import com.jeespb.accountservice.dto.UserDto;
 import com.jeespb.accountservice.dto.request.SessionRequestDto;
 import org.slf4j.Logger;
@@ -24,6 +26,12 @@ public class DatabaseService {
     @Value("${microservices.databaseService.accountInfo}")
     private String accountInfoUrl;
 
+    @Value("${microservices.databaseService.transactions}")
+    private String transactionUrl;
+
+    @Value("${microservices.databaseService.rewards}")
+    private String rewardUrl;
+
     private final RestTemplate restTemplate;
 
     public DatabaseService(RestTemplate restTemplate) {
@@ -33,6 +41,16 @@ public class DatabaseService {
     public AccountDto[] getAccountInfo(String userId) {
         String url = String.format(accountInfoUrl, userId);
         return restTemplate.getForObject(url, AccountDto[].class);
+    }
+
+    public TransactionDto[] getTransactions(String accountNumber) {
+        String url = String.format(transactionUrl, accountNumber);
+        return restTemplate.getForObject(url, TransactionDto[].class);
+    }
+
+    public RewardDto[] getRewards(String username) {
+        String url = String.format(rewardUrl, username);
+        return restTemplate.getForObject(url, RewardDto[].class);
     }
 
     public UserDto getSession(SessionRequestDto requestDto) {

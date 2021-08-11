@@ -16,3 +16,5 @@ microservices:
   databaseService:
     session: http://databaseservice/domain/user/session
     accountInfo: http://databaseservice/domain/user/accountInfo?username=%s
+    transactions: http://databaseservice/domain/user/transactions?accountNumber=%s
+    rewards: http://databaseservice/domain/user/rewards?username=%s
