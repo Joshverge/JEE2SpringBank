@@ -1,5 +1,17 @@
 # JEESPB
 
+# What is JEE2SpringBank?
+It is a Spring Boot-based microservices demo for a banking application. It simulates common banking operations such as login, logout, account management, and transaction history, using Spring Cloud's service registry and REST APIs.
+
+# Primary Goals:
+
+- Show how a Java EE monolith can be broken into microservices
+- Demonstrate service discovery using Netflix Eureka
+- Provide a REST-based backend (does not include a frontend UI)
+- Serve as a backend prototype for a banking web or mobile app
+
+
+
 ## Build Services
 Run command
 ```shell
